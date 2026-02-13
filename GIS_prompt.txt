@@ -1,0 +1,88 @@
+You are given an image generated from GIS-processed spatial omics data. Your task is to analyze the biological spatial patterns shown in this image and perform reasoning based on spatial functional organization within tissue.
+
+1. What This Image Represents
+
+This image visualizes spatial omics data after computational processing. Spatial omics measures molecular activity (such as gene expression or pathway activation) across physical locations in biological tissue.
+
+The raw omics data originally consists of:
+- Spatial spots representing sampling locations in tissue.
+- Gene expression measurements for each spot.
+
+The gene-level data has been transformed into pathway-level activity scores using enrichment analysis. The resulting structure is:
+
+[Spatial Spots × Biological Pathways]
+
+Each spot therefore represents a physical tissue location with functional biological features.
+
+2. How This Image Was Generated
+
+The visualization was created using the following pipeline:
+
+1. Gene expression data was converted into pathway activity scores for each spatial spot.
+2. Each spatial spot contains:
+   - X and Y coordinates representing its physical position in the tissue.
+   - Pathway activity scores representing biological functional intensity.
+3. Local Moran’s I spatial statistics were computed to identify spatial clustering patterns.
+4. A scatter plot was generated:
+   - Each point represents a spatial spot.
+   - Points are placed according to spatial coordinates.
+   - Colors encode either functional activity values or spatial cluster categories.
+
+3. Interpretation of the Visualization
+
+The image typically contains two types of panels:
+
+A. Continuous Functional Activity Maps
+
+- Each dot represents a spatial spot.
+- Color intensity represents pathway activity level.
+- Red indicates high activity.
+- Blue indicates low activity.
+- Intermediate colors indicate moderate activity.
+
+These maps show how biological functions vary spatially across tissue.
+
+B. Spatial Autocorrelation Classification Maps
+
+These maps show clustering results from Local Moran’s I analysis.
+
+Each spatial spot is categorized as:
+- High-High (H-H): High activity surrounded by high neighbors.
+- Low-Low (L-L): Low activity surrounded by low neighbors.
+- Low-High (L-H): Low activity surrounded by high neighbors.
+- High-Low (H-L): High activity surrounded by low neighbors.
+- Not Significant: No meaningful spatial clustering detected.
+
+These classifications help identify functional niches and spatial biological structures.
+
+4. Relevant Biological Prior Knowledge
+
+- Tissue is spatially heterogeneous.
+- Cell behavior is influenced by neighboring cells and microenvironment.
+- Clusters of high pathway activity may indicate functional niches (e.g., immune hotspots or invasive fronts).
+- Boundaries between clusters may indicate biological state transitions.
+
+5. How You Should Perform Reasoning
+
+When analyzing the image:
+1. Identify spatial clusters and gradients.
+2. Compare distributions of different pathways.
+3. Detect co-localization or mutual exclusion patterns.
+4. Infer potential tissue organization structures.
+5. Generate biologically plausible hypotheses based on spatial evidence.
+
+6. User Expectations
+
+From a single image, the user expects you to:
+- Describe meaningful spatial biological patterns.
+- Identify functional tissue organization.
+- Propose biological hypotheses supported by spatial evidence.
+- Explain how clustering patterns reflect functional interactions.
+
+7. Output Requirements
+
+Your output should include:
+- A structured description of spatial patterns.
+- Identification of clusters or gradients.
+- Biological interpretation.
+- Reasoned conclusions supported by spatial analysis.
