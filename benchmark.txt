@@ -1,0 +1,136 @@
+Spatial Pathway Heatmap
+
+
+1. Clustered Pattern Test
+Question:
+    Is this pathway spatially clustered? (Yes/No)
+Validation:
+    Yes if Global Moran’s I > threshold (e.g., 0.2)
+Purpose:
+    Tests spatial autocorrelation recognition.
+
+
+2. Gradient Pattern Test
+Question:
+    Does this pathway show a directional gradient? (Yes/No)
+Validation:
+    Yes if |corr(value, x or y)| > threshold
+Purpose:
+    Tests detection of directional structure.
+
+
+3. Domain Count Estimation
+Question:
+    How many high-activity regions are present? (Integer)
+Validation:
+    Count connected components in top 20% intensity mask
+Purpose:
+    Tests segmentation-level reasoning and counting. 
+
+
+
+Moran Hotspot Map
+
+
+4. Significant Hotspot Presence
+Question:
+    Are significant High-High regions present? (Yes/No)
+Validation:
+    Yes if HH count > threshold
+Purpose:
+    Tests understanding of Moran structure.
+
+
+5. Dominant Structure Type
+Question:
+    Is this tissue dominated by hotspots? (Yes/No)
+Validation:
+    Yes if HH count > LL count
+Purpose:
+    Tests global structure interpretation.
+
+
+6. Boundary Structure Presence
+Question:
+    Are boundary regions (H-L or L-H) present? (Yes/No)
+Validation:
+    Yes if HL + LH proportion > threshold
+Purpose:
+    Tests recognition of transition zones.
+
+
+
+Pathway Correlation Heatmap
+
+
+7. Functional Module Presence
+Question:
+    Are there pathway modules with correlation > 0.6? (Yes/No)
+Validation:
+    Check if any block in correlation matrix exceeds threshold
+Purpose:
+    Tests network clustering reasoning.
+
+
+8. Antagonistic Pair Presence
+Question:
+    Are there negatively correlated pathway pairs? (Yes/No)
+Validation:
+    Any correlation < -0.3
+Purpose:
+    Tests detection of functional exclusion.
+
+
+
+Bivariate Moran Map
+
+
+9. Spatial Co-localization
+Question:
+    Do pathway A and B spatially co-localize? (Yes/No)
+Validation:
+    Yes if HH proportion > threshold
+Purpose:
+    Tests detection of shared spatial niches.
+
+
+10. Spatial Antagonism
+Question:
+    Is there spatial antagonism between pathway A and B? (Yes/No)
+Validation:
+    Yes if HL + LH proportion > HH proportion
+Purpose:
+    Tests detection of spatial competition.
+
+
+
+
+
+Moran Map more: 
+
+Question:
+    How many connected High-High (HH) regions are present? (Integer)
+
+Validation:
+    Extract spots where quad == 1 (HH)
+    Compute connected components based on spatial adjacency
+    Count number of connected HH clusters
+
+
+Question:
+    Is there one dominant HH region? (Yes/No)
+
+Validation:
+    Compute size of each HH connected component
+    Yes if largest HH region contains > 50% of all HH spots
+
+
+Question:
+    Is the proportion of boundary regions (HL + LH) greater than 10%? (Yes/No)
+
+Validation:
+    boundary_ratio = (# HL + # LH) / total spots
+    Yes if boundary_ratio > 0.10
+
+
+
